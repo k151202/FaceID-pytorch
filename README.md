@@ -19,14 +19,14 @@ Face recognition &amp; identification with facenet-pytorch
 ## 의존성
 
 ```
-torch = "_"
-numpy = "_"
-pandas = "_"
-torchvision = "_"
-requests = "_"
-tensorboard = "_"
-pillow = "_"
-opencv-python = "_"
+torch = "*"
+numpy = "*"
+pandas = "*"
+torchvision = "*"
+requests = "*"
+tensorboard = "*"
+pillow = "*"
+opencv-python = "*"
 python_version = "3.8
 ```
 
