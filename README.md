@@ -18,6 +18,7 @@ Face recognition &amp; identification with facenet-pytorch
 
 ## 의존성
 
+```
 torch = "_"
 numpy = "_"
 pandas = "_"
@@ -27,6 +28,7 @@ tensorboard = "_"
 pillow = "_"
 opencv-python = "_"
 python_version = "3.8
+```
 
 ## 실행방법
 
