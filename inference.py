@@ -33,11 +33,6 @@ mtcnn_all = MTCNN(
     keep_all=True,
 )
 
-# define Inception Resnet V1 module
-resnet = InceptionResnetV1(classify=False, num_classes=4)
-resnet.load_state_dict(torch.load("model_state_dict.pt"), strict=False)
-resnet.eval().to(device)
-
 # define dataset and dataloader
 def collate_fn(x):
     return x[0]
@@ -45,11 +40,16 @@ def collate_fn(x):
 
 dataset = datasets.ImageFolder("test_images")
 # accessing names of people from folder names
-dataset.idx_to_class = {i: c for c, i in dataset.class_to_idx.items()}
+dataset.class_to_idx = {i: c for c, i in dataset.class_to_idx.items()}
 loader = DataLoader(dataset, collate_fn=collate_fn, num_workers=0)
 
 # 클래스 이름 확인
-print(dataset.idx_to_class)
+print(dataset.class_to_idx)
+
+# define Inception Resnet V1 module
+resnet = InceptionResnetV1(classify=False, num_classes=len(dataset.class_to_idx))
+resnet.load_state_dict(torch.load("model_state_dict.pt"), strict=False)
+resnet.eval().to(device)
 
 # perform MTCNN face detection
 
@@ -63,7 +63,7 @@ for x, y in loader:
     if x_aligned is not None:
         print(f"Face detected with probability: {prob}")
         aligned.append(x_aligned)
-        names.append(dataset.idx_to_class[y])
+        names.append(dataset.class_to_idx[y])
 
 # calculate image embeddings
 aligned = torch.stack(aligned).to(device)
