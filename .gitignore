@@ -1,0 +1,14 @@
+model_state_dict.pt
+
+Pipfile.lock
+Pipfile
+
+.vscode/
+
+images_cropped/
+
+.DS_Store
+
+__pycache__/
+
+runs/
