@@ -28,6 +28,11 @@ Face recognition &amp; identification with facenet-pytorch
    - 용량이 큰 문제로 축소버전인 MobileFaceNet의 tensorflow-lite 버전으로 구현함
    - 안드로이드 관련 코드는 추후 업로드 예정
 
+## Face Recognition Demo
+<img width="488" alt="스크린샷 2021-10-11 20 15 47" src="https://user-images.githubusercontent.com/56901668/136781412-08799990-c5f4-498b-a3b0-01313fe9366d.png">
+<img width="384" alt="스크린샷 2021-10-11 20 15 54" src="https://user-images.githubusercontent.com/56901668/136781415-3f11938c-7257-45b4-b91d-2687199f7e39.png">
+
+
 ## 의존성
 
 ```
