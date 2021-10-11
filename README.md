@@ -33,7 +33,7 @@ Face recognition &amp; identification with facenet-pytorch
 <img width="384" alt="스크린샷 2021-10-11 20 15 54" src="https://user-images.githubusercontent.com/56901668/136781415-3f11938c-7257-45b4-b91d-2687199f7e39.png">
 
 
-## 의존성
+## Dependencies
 
 ```
 torch = "*"
