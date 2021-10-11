@@ -13,10 +13,13 @@ import numpy as np
 import pandas as pd
 import os
 
+# path for image files
 data_path = "images"
 
+# set batch size and epochs
 batch_size = 32
-epochs = 8
+epochs = 10
+
 # 0 if using cpu
 workers = 0
 
@@ -27,7 +30,7 @@ print("Running on device: {}".format(device))
 # define MTCNN
 mtcnn = MTCNN(
     image_size=160,
-    margin=0,
+    margin=14,
     min_face_size=20,
     thresholds=[0.6, 0.7, 0.7],
     factor=0.709,
@@ -39,10 +42,12 @@ mtcnn = MTCNN(
 # face detection with MTCNN - iterate through the DataLoader and obtain cropped faces
 dataset = datasets.ImageFolder(data_path, transform=transforms.Resize((512, 512)))
 
+# replace face-cropped images from original images
 dataset.samples = [
     (p, p.replace(data_path, data_path + "_cropped")) for p, _ in dataset.samples
 ]
 
+# initiate DataLoader
 loader = DataLoader(
     dataset, num_workers=workers, batch_size=batch_size, collate_fn=training.collate_pil
 )
@@ -70,6 +75,8 @@ trans = transforms.Compose(
 dataset = datasets.ImageFolder(data_path + "_cropped", transform=trans)
 img_inds = np.arange(len(dataset))
 np.random.shuffle(img_inds)
+
+# split train set and validation set using SubsetRandomSampler
 train_inds = img_inds[: int(0.8 * len(img_inds))]
 val_inds = img_inds[int(0.8 * len(img_inds)) :]
 
